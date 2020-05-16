@@ -52,24 +52,15 @@ class KeywordQueryEventListener(EventListener):
 
         logger.info("User Inputs: " + "--".join(event.get_argument()))
 
-        error = 1
-
         chatId = event.get_argument()
 
-        resultItem = None
+        fullUri = "https://" + baseUri + '/' + chatId
 
-        if error and len(chatId):
-            resultItem = ExtensionResultItem(
-                icon = 'images/error_icon.png',
-                name = 'Unable to verify Whereby ID: ' + chatId
-            )
-        elif len(chatId):
-            fullUri = "https://" + baseUri + '/' + chatId
-            resultItem = ExtensionResultItem(
-                icon = 'images/whereby_icon.png',
-                name = 'Open Whereby for: ' + fullUri,
-                on_enter = OpenUrlAction(fullUri)
-            )
+        resultItem = ExtensionResultItem(
+            icon = 'images/whereby_icon.png',
+            name = 'Open Whereby for: ' + fullUri,
+            on_enter = OpenUrlAction(fullUri)
+        )
 
         return RenderResultListAction([resultItem])
 
