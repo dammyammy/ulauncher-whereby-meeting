@@ -17,23 +17,23 @@ class WherebyJoinMeeting(Extension):
 class KeywordQueryEventListener(EventListener):
 
     def on_event(self, event, extension):
-        baseUri = extension.preferences['base_uri']
+        base_uri = extension.preferences['base_uri']
 
-        defaultRoom = extension.preferences['default_room']
+        default_room = extension.preferences['default_room']
 
-        logger.info("User Inputs: " + "--".join(event.get_argument()))
+        logger.info("User Room: " + "--".join(event.get_argument()))
 
-        chatId = event.get_argument()
-
-        if len(chatId) == 0:
-            fullUri = "https://" + baseUri + '/' + defaultRoom
+        if len(event.get_argument()) == 0:
+            chat_id = default_room
         else:
-            fullUri = "https://" + baseUri + '/' + chatId
+            chat_id = event.get_argument()
+
+        full_uri = "https://" + base_uri + '/' + chat_id
 
         resultItem = ExtensionResultItem(
             icon = 'images/whereby_icon.png',
-            name = 'Open Whereby for: ' + fullUri,
-            on_enter = OpenUrlAction(fullUri)
+            name = 'Open Whereby for: ' + full_uri,
+            on_enter = OpenUrlAction(full_uri)
         )
 
         return RenderResultListAction([resultItem])
