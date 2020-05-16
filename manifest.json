@@ -1,7 +1,7 @@
 {
   "required_api_version": "^2.0.0",
   "name": "Whereby - Join a meeting",
-  "description": "Quick way to join a meeting - default browser is required.",
+  "description": "Quick way to join a Whereby meeting - default browser is required.",
   "developer_name": "Damilola Ogunmoye",
   "icon": "images/whereby_icon.png",
   "options": {
