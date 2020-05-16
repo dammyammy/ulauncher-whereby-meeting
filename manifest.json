@@ -27,7 +27,7 @@
       "type": "text",
       "name": "Shortcuts",
       "description": "List of shortcuts in the format of keys and values separate by colon and pairs separate by semi-colon: name:whereby_id;name2:whereby_id2",
-      "default_value": "helloworld"
+      "default_value": "name:whereby_id"
     }
   ]
 }

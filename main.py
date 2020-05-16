@@ -56,7 +56,7 @@ class KeywordQueryEventListener(EventListener):
 
         error = 1
 
-        chatId = checkForShortcut(userInputs[1])
+        chatId = userInputs[1]
 
         resultItem = None
 
