@@ -56,7 +56,7 @@ class KeywordQueryEventListener(EventListener):
 
         error = 1
 
-        chatId = userInputs[1]
+        chatId = userInputs[0]
 
         resultItem = None
 
