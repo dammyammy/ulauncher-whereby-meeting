@@ -7,12 +7,36 @@ from ulauncher.api.shared.action.OpenUrlAction import OpenUrlAction
 
 import logging
 
+room = ""
+
 logger = logging.getLogger(__name__)
+
+def updateRoom(roomString):
+    logger.info("Updating Room - %s" % (roomString))
+    room = roomString
+
+
+def checkForRoom(string):
+    if room == string:
+        return room
+    else:
+        return string
 
 class WherebyJoinMeeting(Extension):
     def __init__(self):
         super(WherebyJoinMeeting, self).__init__()
         self.subscribe(KeywordQueryEvent, KeywordQueryEventListener())
+        self.subscribe(PreferencesEvent, PreferencesLoadListener())
+        self.subscribe(PreferencesUpdateEvent, PreferencesUpdateListener())
+
+class PreferencesLoadListener(EventListener):
+    def on_event(self, event, extension):
+        updateRoom(event.preferences['default_room'])
+
+class PreferencesUpdateListener(EventListener):
+    def on_event(self, event, extension):
+        if event.id == 'default_room':
+            updateRoom(event.new_value)
 
 class KeywordQueryEventListener(EventListener):
 
@@ -21,12 +45,14 @@ class KeywordQueryEventListener(EventListener):
 
         default_room = extension.preferences['default_room']
 
+        updateRoom(default_room);
+
         logger.info("User Room: " + "--".join(event.get_argument()))
 
         if event.get_argument() is None:
-            chat_id = default_room
+            chat_id = checkForRoom(default_room)
         else:
-            chat_id = event.get_argument()
+            chat_id = checkForRoom(event.get_argument())
 
         full_uri = "https://" + base_uri + '/' + chat_id
 
