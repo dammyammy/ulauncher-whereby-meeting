@@ -46,20 +46,6 @@ class PreferencesUpdateListener(EventListener):
 
 
 class KeywordQueryEventListener(EventListener):
-    def determineLinkType(self, wherebyId):
-        logger.info("determineLinkType for %s" % (wherebyId))
-        chatType = ''
-
-        # Whereby offers two types of links:
-        #  1) Meeting ID which is only numbers ('j')
-        #  2) Personal Link which is 5-40 characters, start with a letter, and contain only a-z, 0-9, and '.' ('my')
-        if re.match('^\d+$', wherebyId):
-            chatType = 'j'
-        elif re.match('^[a-z][a-z0-9.]{4,39}$', wherebyId):
-            chatType = 'my'
-
-        logger.info("Found that %s is %s" % (wherebyId, chatType))
-        return chatType
 
     def on_event(self, event, extension):
         baseUri = extension.preferences['base_uri']
@@ -72,8 +58,8 @@ class KeywordQueryEventListener(EventListener):
 
         chatId = checkForShortcut(userInputs[1])
 
-
         resultItem = None
+
         if error and len(chatId):
             resultItem = ExtensionResultItem(
                 icon = 'images/error_icon.png',
