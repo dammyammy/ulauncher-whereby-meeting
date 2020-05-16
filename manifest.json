@@ -1,0 +1,33 @@
+{
+  "required_api_version": "^2.0.0",
+  "name": "Whereby - Join a meeting",
+  "description": "Quick way to join a meeting - default browser is required.",
+  "developer_name": "Damilola Ogunmoye",
+  "icon": "images/whereby_icon.png",
+  "options": {
+    "query_debounce": 0.1
+  },
+  "preferences": [
+    {
+      "id": "whereby_kw",
+      "type": "keyword",
+      "name": "Whereby",
+      "description": "Keyword to call this extension",
+      "default_value": "whereby"
+    },
+    {
+      "id": "base_uri",
+      "type": "text",
+      "name": "Whereby Base URI",
+      "description": "Company specific whereby base URI",
+      "default_value": "whereby.com"
+    },
+    {
+      "id": "shortcuts",
+      "type": "text",
+      "name": "Shortcuts",
+      "description": "List of shortcuts in the format of keys and values separate by colon and pairs separate by semi-colon: name:whereby_id;name2:whereby_id2",
+      "default_value": "helloworld"
+    }
+  ]
+}
