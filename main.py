@@ -45,11 +45,11 @@ class KeywordQueryEventListener(EventListener):
 
         default_room = extension.preferences['default_room']
 
-        updateRoom(default_room);
+        updateRoom(default_room)
 
         logger.info("User Room: " + "--".join(event.get_argument()))
 
-        if event.get_argument() == 'default':
+        if event.get_argument() in ['default', 'room', 'd', 'open']:
             chat_id = checkForRoom(default_room)
         else:
             chat_id = checkForRoom(event.get_argument())
@@ -58,7 +58,7 @@ class KeywordQueryEventListener(EventListener):
 
         resultItem = ExtensionResultItem(
             icon = 'images/whereby_icon.png',
-            name = 'Open Whereby for: ' + full_uri,
+            name = 'Open ' + chat_id + ' on Whereby',
             on_enter = OpenUrlAction(full_uri)
         )
 

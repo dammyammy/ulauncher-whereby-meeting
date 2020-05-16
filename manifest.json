@@ -19,7 +19,7 @@
       "id": "base_uri",
       "type": "text",
       "name": "Whereby Base URI",
-      "description": "Company specific whereby base URI",
+      "description": "Whereby base URI",
       "default_value": "whereby.com"
     },
     {
