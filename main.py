@@ -58,7 +58,7 @@ class KeywordQueryEventListener(EventListener):
 
         resultItem = ExtensionResultItem(
             icon = 'images/whereby_icon.png',
-            name = 'Open ' + chat_id + ' on Whereby',
+            name = 'Open ' + chat_id + ' Whereby Room.',
             on_enter = OpenUrlAction(full_uri)
         )
 
