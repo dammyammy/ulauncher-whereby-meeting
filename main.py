@@ -49,7 +49,7 @@ class KeywordQueryEventListener(EventListener):
 
         logger.info("User Room: " + "--".join(event.get_argument()))
 
-        if event.get_argument() is None:
+        if event.get_argument() == 'default':
             chat_id = checkForRoom(default_room)
         else:
             chat_id = checkForRoom(event.get_argument())
