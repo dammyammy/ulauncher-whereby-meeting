@@ -50,13 +50,11 @@ class KeywordQueryEventListener(EventListener):
     def on_event(self, event, extension):
         baseUri = extension.preferences['base_uri']
 
-
-        userInputs = event.get_query().split()
-        logger.info("User Inputs: " + "--".join(userInputs))
+        logger.info("User Inputs: " + "--".join(event.get_argument()))
 
         error = 1
 
-        chatId = userInputs[0]
+        chatId = event.get_argument()
 
         resultItem = None
 
